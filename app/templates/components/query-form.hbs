@@ -1,0 +1,11 @@
+{{x-select
+  model=model
+  labelKey="Nombre"
+  valueKey="Id"
+  placeholder="Seleccione un serie ..."
+  onSelect=(action 'select')}}
+
+{{#if capitulos}}
+  {{capitulos}}
+  {{select-capitulos capitulos=capitulos}}
+{{/if}}

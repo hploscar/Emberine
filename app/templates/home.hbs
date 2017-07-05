@@ -1,9 +1,12 @@
-{{x-select
+<h2 class="ui center aligned header">EmberINE</h2>
+<button
+  class="ui circular plus icon button"
+  onClick={{action "toggleQueryFormVisibility"}}>
+  <i class="plus icon"></i>
+</button>
+
+{{query-form
+  isVisible=queryFormVisible
   model=model
-  labelKey="Nombre"
-  valueKey="Id"
-  placeholder="Seleccione un serie ..."
-  onSelect=(action 'select')}}
-<div>
-  {{operation}}
-</div>
+  capitulos=capitulos
+  select="selectSeries"}}
