@@ -1,4 +1,5 @@
-import DS from 'ember-data';
+import DS from 'ember-data'
+import Ember from 'ember'
 
 export default DS.JSONAPIAdapter.extend({
   queryRecord(store, type, query) {
@@ -14,4 +15,4 @@ export default DS.JSONAPIAdapter.extend({
       // return store.createRecord('capitulosraiz-operacion', response)
     })
   }
-});
+})

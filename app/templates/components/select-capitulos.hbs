@@ -1,12 +1,13 @@
-<div>Select Capitulos</div>
+
 <div class="ui form">
   <div class="grouped inline fields">
     {{#each capitulos.Data as |capitulo|}}
       <div class="field">
         {{ui-radio
-          name="capitulos"
+          name=name
           label=capitulo.Nombre
-          value=capitulo.Id}}
+          value=capitulo.Id
+          onChecked=(action 'selectCapitulo' capitulo.Id)}}
       </div>
     {{/each}}
   </div>

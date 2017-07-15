@@ -1,11 +1,45 @@
-{{x-select
-  model=model
-  labelKey="Nombre"
-  valueKey="Id"
-  placeholder="Seleccione un serie ..."
-  onSelect=(action 'select')}}
+<div class="ui two column stackable grid">
+  <div class="column">
+    {{x-select
+      model=model
+      labelKey="Nombre"
+      valueKey="Id"
+      placeholder="Seleccione un serie ..."
+      onSelect=(action 'select')}}
+  </div>
+  <div class="column">
+    {{#if capitulos}}
+      {{select-capitulos
+        name="capitulos"
+        capitulos=capitulos
+        selectCapitulo=(action 'selectCapitulo')}}
+    {{/if}}
+  </div>
+</div>
+<div class="ui three column stackable grid">
+  <div class="two column"></div>
+  <div class="twelve column">
+    {{#if subCapitulos}}
+      {{x-select
+        model=subCapitulos
+        labelKey="Nombre"
+        valueKey="Id"
+        placeholder="Seleccione ..."
+        onSelect=(action 'selectCapitulo')}}
+    {{/if}}
+  </div>
+  <div class="two column"></div>
+</div>
 
-{{#if capitulos}}
-  {{capitulos}}
-  {{select-capitulos capitulos=capitulos}}
+    {{#if tables}}
+      <hr />
+      {{select-capitulos
+        name="tables"
+        capitulos=tables
+        selectCapitulo=(action 'showButton')}}
+    {{/if}}
+
+
+{{#if showButton}}
+  <button class="ui button" {{action "loadDataTable"}}>Generate</button>
 {{/if}}

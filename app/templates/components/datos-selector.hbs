@@ -1,0 +1,11 @@
+{{#ui-dropdown class="fluid multiple selection" selected=country2}}
+  <i class="dropdown icon"></i>
+  <div class="default text">Select Tables to render</div>
+  <div class="menu">
+    {{#each data as |dato|}}
+      <div class="item" data-value="{{dato.COD}}">
+        {{dato.Nombre}}
+      </div>
+    {{/each}}
+  </div>
+{{/ui-dropdown}}

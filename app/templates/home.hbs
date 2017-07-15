@@ -1,12 +1,43 @@
-<h2 class="ui center aligned header">EmberINE</h2>
-<button
-  class="ui circular plus icon button"
-  onClick={{action "toggleQueryFormVisibility"}}>
-  <i class="plus icon"></i>
-</button>
+<h2 class="ui header">
+  <div class="content">
+    EmberINE
+    <div class="sub header">An INE explorer</div>
+  </div>
+</h2>
 
-{{query-form
-  isVisible=queryFormVisible
-  model=model
-  capitulos=capitulos
-  select="selectSeries"}}
+<div class="ui grid fluid">
+  <div class='floated right column'>
+    <button
+      class="ui circular plus icon button"
+      onClick={{action "toggleQueryFormVisibility"}}>
+      <i class="plus icon"></i>
+    </button>
+  </div>
+
+  <div class="ui row">
+    {{query-form
+      isVisible=queryFormVisible
+      model=model
+      capitulos=capitulos
+      subCapitulos=subCapitulos
+      tables=tables
+      select="selectSeries"
+      selectCapitulo="selectCapitulo"
+      loadDataTable="loadDataTable"}}
+  </div>
+  <div class="ui row">
+    {{#if datos}}
+      {{datos-selector
+        data=datos
+        loadChart="loadChart"}}
+    {{/if}}
+  </div>
+
+  <div class="ui row">
+    {{#if chartData}}
+      {{#each chartData as |chart|}}
+        {{chart-component data=chart}}
+      {{/each}}
+    {{/if}}
+  </div>
+</div>
