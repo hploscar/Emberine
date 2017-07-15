@@ -1,0 +1,7 @@
+pipeline:
+  build:
+    image: nginx:latest
+    commands: ember build
+  test:
+    image: node:7
+    commands: ember test
