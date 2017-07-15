@@ -1,5 +1,5 @@
-<div class="ui two column stackable grid">
-  <div class="column">
+<div class="ui row">
+  <div class="ui column">
     {{x-select
       model=model
       labelKey="Nombre"
@@ -7,7 +7,14 @@
       placeholder="Seleccione un serie ..."
       onSelect=(action 'select')}}
   </div>
-  <div class="column">
+</div>
+<div class="ui row">
+  <div class="ui column">
+    {{#if loading}}
+      <div class="ui active inverted dimmer">
+        <div class="ui text loader">Loading</div>
+      </div>
+    {{/if}}
     {{#if capitulos}}
       {{select-capitulos
         name="capitulos"
@@ -16,9 +23,9 @@
     {{/if}}
   </div>
 </div>
-<div class="ui three column stackable grid">
-  <div class="two column"></div>
-  <div class="twelve column">
+
+<div class="ui row">
+  <div class="ui column">
     {{#if subCapitulos}}
       {{x-select
         model=subCapitulos
@@ -28,17 +35,15 @@
         onSelect=(action 'selectCapitulo')}}
     {{/if}}
   </div>
-  <div class="two column"></div>
 </div>
 
-    {{#if tables}}
-      <hr />
-      {{select-capitulos
-        name="tables"
-        capitulos=tables
-        selectCapitulo=(action 'showButton')}}
-    {{/if}}
-
+{{#if tables}}
+  <hr />
+  {{select-capitulos
+    name="tables"
+    capitulos=tables
+    selectCapitulo=(action 'showButton')}}
+{{/if}}
 
 {{#if showButton}}
   <button class="ui button" {{action "loadDataTable"}}>Generate</button>

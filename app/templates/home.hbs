@@ -1,20 +1,23 @@
-<h2 class="ui header">
-  <div class="content">
-    EmberINE
-    <div class="sub header">An INE explorer</div>
-  </div>
-</h2>
+<div class="ui container text">
+  <h2 class="ui center aligned icon header">
+    <i class="circular users icon"></i>
+      <div class="content">
+        EmberINE
+      <div class="sub header">An INE explorer</div>
+    </div>
+  </h2>
 
-<div class="ui grid fluid">
-  <div class='floated right column'>
-    <button
-      class="ui circular plus icon button"
-      onClick={{action "toggleQueryFormVisibility"}}>
-      <i class="plus icon"></i>
-    </button>
-  </div>
+  <div class="ui grid fluid">
+    <div class='ui row'>
+      <div class="ui column">
+        <button
+          class="ui right floated circular plus icon button"
+          onClick={{action "toggleQueryFormVisibility"}}>
+          <i class="plus icon"></i>
+        </button>
+      </div>
+    </div>
 
-  <div class="ui row">
     {{query-form
       isVisible=queryFormVisible
       model=model
@@ -24,20 +27,21 @@
       select="selectSeries"
       selectCapitulo="selectCapitulo"
       loadDataTable="loadDataTable"}}
-  </div>
-  <div class="ui row">
-    {{#if datos}}
-      {{datos-selector
-        data=datos
-        loadChart="loadChart"}}
-    {{/if}}
-  </div>
 
-  <div class="ui row">
-    {{#if chartData}}
-      {{#each chartData as |chart|}}
-        {{chart-component data=chart}}
-      {{/each}}
-    {{/if}}
+    <div class="ui row">
+      {{#if datos}}
+        {{datos-selector
+          data=datos
+          loadChart="loadChart"}}
+      {{/if}}
+    </div>
+
+    <div class="ui row">
+      {{#if chartData}}
+        {{#each chartData as |chart|}}
+          {{chart-component data=chart}}
+        {{/each}}
+      {{/if}}
+    </div>
   </div>
 </div>
